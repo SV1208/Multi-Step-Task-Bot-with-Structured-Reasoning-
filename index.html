@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Assistant</title>
+    
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        .typing-indicator span {
+            display: inline-block;
+            width: 6px;
+            height: 6px;
+            background-color: #9ca3af;
+            border-radius: 50%;
+            margin: 0 2px;
+            animation: bounce 1.4s infinite ease-in-out both;
+        }
+        .typing-indicator span:nth-child(1) { animation-delay: -0.32s; }
+        .typing-indicator span:nth-child(2) { animation-delay: -0.16s; }
+        @keyframes bounce {
+            0%, 80%, 100% { transform: scale(0); }
+            40% { transform: scale(1); }
+        }
+    </style>
+</head>
+</head>
+<body class="bg-gray-50 h-screen flex flex-col items-center">
+
+    <header class="w-full max-w-4xl pt-8 pb-4 px-6">
+        <h1 class="text-2xl font-semibold text-gray-800">AI Assistant</h1>
+    </header>
+
+    <main id="chat-container" class="flex-1 w-full max-w-4xl px-6 pb-32 overflow-y-auto no-scrollbar flex flex-col space-y-6">
+        <div class="flex flex-col items-start mt-8">
+            <div class="bg-white border border-gray-100 shadow-sm rounded-2xl rounded-tl-none px-5 py-3 text-gray-800 max-w-[85%] leading-relaxed">
+                Hello! I am your AI Assistant.
+            </div>
+        </div>
+    </main>
+
+    <div class="fixed bottom-0 w-full bg-gradient-to-t from-gray-50 via-gray-50 to-transparent pb-8 pt-10 px-6 flex justify-center">
+        <div class="w-full max-w-3xl relative bg-white rounded-3xl shadow-[0_0_15px_rgba(0,0,0,0.05)] border border-gray-200 p-2 flex items-end">
+            <textarea id="user-input" rows="1" 
+                class="w-full bg-transparent border-none focus:ring-0 resize-none py-3 px-4 text-gray-800 placeholder-gray-400 max-h-32"
+                placeholder="Ask a question... (e.g., 'Plan a 2-day academic visit to Norway.')"></textarea>
+            
+            <button id="send-btn" class="mb-2 mr-2 p-2 bg-blue-600 hover:bg-blue-700 text-white rounded-full transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 10.5L12 3m0 0l7.5 7.5M12 3v18" />
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
